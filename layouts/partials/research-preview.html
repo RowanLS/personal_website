@@ -1,0 +1,33 @@
+{{ $page := . }}
+
+<article class="research-preview">
+    <h3>
+        <a href="{{ .RelPermalink }}">{{ .LinkTitle | default .Title }}</a>
+    </h3>
+
+    {{ with .Params.summary }}
+        <p class="research-summary">{{ . }}</p>
+    {{ end }}
+
+    <div class="research-meta">
+        {{ with .Params.area }}
+            <span>{{ . }}</span>
+        {{ end }}
+
+        {{ with .Params.methods }}
+            {{ if $.Params.area }}<span class="separator">·</span>{{ end }}
+            <span>{{ delimit . " · " }}</span>
+        {{ end }}
+
+        {{ with .Params.timeline }}
+            {{ if or $.Params.area $.Params.methods }}<span class="separator">·</span>{{ end }}
+            <span>{{ . }}</span>
+        {{ end }}
+    </div>
+
+    {{ with .Params.deliverables }}
+        <p class="research-outputs">
+            {{ delimit . " · " }}
+        </p>
+    {{ end }}
+</article>

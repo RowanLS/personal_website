@@ -1,0 +1,16 @@
+{{ define "main" }}
+
+<h1>{{ .Title }}</h1>
+
+{{ .Content }}
+
+
+{{ range .Pages.ByWeight }}
+
+    {{ partial "project-preview.html" . }}
+
+{{ end }}
+
+
+
+{{ end }}

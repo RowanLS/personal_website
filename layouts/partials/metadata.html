@@ -1,0 +1,150 @@
+{{/* ==========================================================================
+     Metadata Panel
+     Supports both Software and Research pages.
+   ========================================================================== */}}
+
+{{ if or
+    .Params.project_type
+    .Params.users
+    .Params.technologies
+    .Params.timeline
+    .Params.area
+    .Params.methods
+    .Params.deliverables
+    .Params.role 
+    .Params.focus 
+    .Params.interests 
+    .Params.collaboration
+    .Params.document_type
+    .Params.format
+    .Params.updated
+    .Params.pages
+    }}
+
+<dl class="panel metadata-panel">
+
+    {{/* ------------------------------------------------------------------
+         Software
+       ------------------------------------------------------------------ */}}
+
+    {{ with .Params.project_type }}
+    <div class="metadata-row">
+        <dt>Type</dt>
+        <dd>{{ . }}</dd>
+    </div>
+    {{ end }}
+
+    {{ with .Params.users }}
+    <div class="metadata-row">
+        <dt>Users</dt>
+        <dd>{{ . }}</dd>
+    </div>
+    {{ end }}
+
+    {{ with .Params.technologies }}
+    <div class="metadata-row">
+        <dt>Stack</dt>
+        <dd>{{ delimit . " · " }}</dd>
+    </div>
+    {{ end }}
+
+    {{/* ------------------------------------------------------------------
+         Shared
+       ------------------------------------------------------------------ */}}
+
+    {{ with .Params.timeline }}
+    <div class="metadata-row">
+        <dt>Timeline</dt>
+        <dd>{{ . }}</dd>
+    </div>
+    {{ end }}
+
+    {{/* ------------------------------------------------------------------
+         Research
+       ------------------------------------------------------------------ */}}
+
+    {{ with .Params.area }}
+    <div class="metadata-row">
+        <dt>Area</dt>
+        <dd>{{ . }}</dd>
+    </div>
+    {{ end }}
+
+    {{ with .Params.methods }}
+    <div class="metadata-row">
+        <dt>Methods</dt>
+        <dd>{{ delimit . " · " }}</dd>
+    </div>
+    {{ end }}
+
+    {{ with .Params.deliverables }}
+    <div class="metadata-row">
+        <dt>Deliverables</dt>
+        <dd>{{ delimit . " · " }}</dd>
+    </div>
+    {{ end }}
+
+    {{/* ------------------------------------------------------------------
+         About me
+       ------------------------------------------------------------------ */}}
+
+    {{ with .Params.role }}
+    <div class="metadata-row">
+        <dt>Role</dt>
+        <dd>{{ . }}</dd>
+    </div>
+    {{ end }}
+
+    {{ with .Params.focus }}
+    <div class="metadata-row">
+        <dt>Focus</dt>
+        <dd>{{ delimit . " · " }}</dd>
+    </div>
+    {{ end }}
+
+    {{ with .Params.interests }}
+    <div class="metadata-row">
+        <dt>Interests</dt>
+        <dd>{{ delimit . " · " }}</dd>
+    </div>
+    {{ end }}
+
+    {{ with .Params.collaboration }}
+    <div class="metadata-row">
+        <dt>Collaboration</dt>
+        <dd>{{ delimit . " · " }}</dd>
+    </div>
+    {{ end }}
+
+      {{ with .Params.document_type }}
+    <div class="metadata-row">
+        <dt>Document</dt>
+        <dd>{{ . }}</dd>
+    </div>
+    {{ end }}
+
+    {{ with .Params.format }}
+    <div class="metadata-row">
+        <dt>Format</dt>
+        <dd>{{ . }}</dd>
+    </div>
+    {{ end }}
+
+    {{ with .Params.updated }}
+    <div class="metadata-row">
+        <dt>Updated</dt>
+        <dd>{{ . }}</dd>
+    </div>
+    {{ end }}
+
+    {{ with .Params.pages }}
+    <div class="metadata-row">
+        <dt>Pages</dt>
+        <dd>{{ . }}</dd>
+    </div>
+    {{ end }}
+
+
+</dl>
+
+{{ end }}

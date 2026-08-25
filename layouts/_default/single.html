@@ -1,0 +1,29 @@
+{{ define "main" }}
+
+<article>
+
+    <h1>{{ .Title }}</h1>
+
+    {{ if eq .Params.page_type "research" }}
+
+        {{ with .Params.summary }}
+            <p class="project-summary">{{ . }}</p>
+        {{ end }}
+
+        {{ partial "metadata.html" . }}
+
+    {{ else if eq .Params.page_type "software" }}
+
+        {{ with .Params.summary }}
+            <p class="project-summary">{{ . }}</p>
+        {{ end }}
+
+        {{ partial "metadata.html" . }}
+
+    {{ end }}
+
+    {{ .Content }}
+
+</article>
+
+{{ end }}

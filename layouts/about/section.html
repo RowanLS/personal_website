@@ -1,0 +1,32 @@
+{{ define "main" }}
+
+<article class="page">
+
+    <h1>{{ .Title }}</h1>
+
+    {{ with .Params.summary }}
+        <p class="project-summary">{{ . }}</p>
+    {{ end }}
+
+    {{ partial "metadata.html" . }}
+
+    <section>
+    <h2>Engineering Approach</h2>
+
+    {{ partial "principles.html" (slice
+        "Design software for long-term maintenance rather than short-term delivery."
+        "Build reusable infrastructure that supports multiple projects and collaborators."
+        "Treat documentation, testing and reproducibility as core engineering activities."
+        "Reduce complexity through thoughtful architecture rather than unnecessary abstraction."
+        "Work collaboratively with researchers to build software that enables better science."
+    ) }}
+        </section>
+        <section>
+    {{ with .Content }}
+
+        {{ . }}
+    {{ end }}
+    </section>
+</article>
+
+{{ end }}

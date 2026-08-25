@@ -1,0 +1,63 @@
+{{ define "main" }}
+
+<section class="hero">
+
+    <h2>
+        Research Software Engineer
+    </h2>
+
+    <p class="summary">
+       Technical lead across UKRI- and ERC-funded research programmes worth over £12M, developing multilingual speech technology and scientific research infrastructure.
+    </p>
+
+<section>
+    <h2>Engineering Approach</h2>
+
+{{ partial "principles.html" (slice
+    "Design software for long-term maintenance rather than short-term delivery."
+    "Build reusable infrastructure that supports multiple projects and collaborators."
+    "Treat documentation, testing and reproducibility as core engineering activities."
+    "Reduce complexity through thoughtful architecture rather than unnecessary abstraction."
+    "Work collaboratively with researchers to build software that enables better science."
+) }}
+</section>
+
+<section class="featured-projects">
+    <h2>Selected Software</h2>
+
+    {{ range first 3 (where site.RegularPages "Section" "software").ByWeight }}
+
+        {{ partial "project-preview.html" . }}
+
+    {{ end }}
+
+</section>
+
+<section class="current-role">
+
+<section class="current-role">
+    <h2>Current Role</h2>
+
+    <div class="panel role-panel">
+        <div class="panel-item role-item">
+            <div class="role-label">Role</div>
+            <div class="role-value">Postdoctoral Researcher</div>
+        </div>
+
+        <div class="panel-item role-item">
+            <div class="role-label">Organisation</div>
+            <div class="role-value">University of Oxford</div>
+        </div>
+
+        <div class="panel-item role-item">
+            <div class="role-label">Focus</div>
+            <div class="role-value">
+                Research software architecture, maintainable systems, scientific tooling
+            </div>
+        </div>
+    </div>
+</section>
+
+</section>
+
+{{ end }}

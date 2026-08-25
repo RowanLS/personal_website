@@ -1,0 +1,33 @@
+<article class="project-preview">
+
+    <h3>
+        <a href="{{ .RelPermalink }}">
+            {{ .Title }}
+        </a>
+    </h3>
+
+    {{ with .Description }}
+        <p class="project-summary">
+            {{ . }}
+        </p>
+    {{ end }}
+
+    <div class="metadata-panel-preview">
+
+        {{ with .Params.role }}
+            <span>{{ . }}</span>
+        {{ end }}
+
+        {{ with .Params.technologies }}
+
+            {{ if $.Params.role }}
+                <span class="separator">·</span>
+            {{ end }}
+
+            <span>{{ delimit . " · " }}</span>
+
+        {{ end }}
+
+    </div>
+
+</article>

@@ -1,0 +1,31 @@
+{{ if or .Params.project_type .Params.users .Params.technologies .Params.timeline }}
+<dl class="metadata-panel">
+    {{ with .Params.project_type }}
+    <div class="metadata-row">
+        <dt>Project type</dt>
+        <dd>{{ . }}</dd>
+    </div>
+    {{ end }}
+
+    {{ with .Params.users }}
+    <div class="metadata-row">
+        <dt>Users</dt>
+        <dd>{{ . }}</dd>
+    </div>
+    {{ end }}
+
+    {{ with .Params.technologies }}
+    <div class="metadata-row">
+        <dt>Stack</dt>
+        <dd>{{ delimit . " · " }}</dd>
+    </div>
+    {{ end }}
+
+    {{ with .Params.timeline }}
+    <div class="metadata-row">
+        <dt>Timeline</dt>
+        <dd>{{ . }}</dd>
+    </div>
+    {{ end }}
+</dl>
+{{ end }}

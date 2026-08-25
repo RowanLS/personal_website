@@ -1,0 +1,770 @@
+/* ==========================================================================
+   Design Tokens
+   ========================================================================== */
+
+:root {
+
+
+    
+    color-scheme: light dark;
+    /* Light theme */
+    --background:    #FAFAF8;
+    --surface:       #FFFFFF;
+    --panel:         #F8F8F9;
+
+    --text:          #2A2D31;
+    --muted:         #6A6E74;
+
+    --border:        #D9D9D6;
+    --panel-border:  #E7E8EA;
+    --rule:          #C9CDD3;
+
+    --accent: #3B6E69;
+    --accent-hover: #2F5A56;
+    /* Typography */
+    --font-heading: "Inter", sans-serif;
+    --font-body: "Inter", sans-serif;
+    --font-mono: "IBM Plex Mono", monospace;
+
+    /* Layout */
+    --page-width: 1200px;
+    --content-width: 72ch;
+
+    /* Spacing */
+    --space-1: .25rem;
+    --space-2: .5rem;
+    --space-3: 1rem;
+    --space-4: 1.5rem;
+    --space-5: 2rem;
+    --space-6: 2.5rem;
+    --space-7: 3rem;
+    --space-8: 4rem;
+
+    --radius: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+
+    :root {
+
+
+        /* Surfaces */
+
+        --background: #17191B;
+        --surface:    #1E2023;
+        --panel:      #222529;
+
+        /* Typography */
+
+        --text:       #E4E7EA;
+        --muted:      #A6ADB5;
+
+        /* Structure */
+
+        --border:     #34383D;
+        --panel-border:#2E3338;
+        --rule:       #4A5057;
+
+        /* Interaction */
+
+        --accent:       #5AA39C;
+        --accent-hover: #76BAB4;
+
+    }
+
+}
+
+body,
+header,
+footer,
+.project-preview,
+pre {
+
+    transition:
+        background-color .2s ease,
+        color .2s ease,
+        border-color .2s ease;
+
+}
+
+/* ==========================================================================
+   Reset
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+}
+
+body {
+
+    margin: 0;
+
+    background: var(--background);
+    color: var(--text);
+
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    line-height: 1.65;
+
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+.container {
+    width: min(100% - 4rem, var(--content-width));
+    margin-inline: auto;
+}
+
+header .container,
+footer .container {
+    width: min(100% - 2rem, var(--page-width));
+}
+
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+header {
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+.menu a {
+
+    color: var(--text);
+    position: relative;
+    text-decoration: none;
+
+}
+
+.menu a:hover {
+
+    color: var(--text);
+    text-decoration: none;
+
+}
+
+.menu a.active {
+
+    color: var(--text);
+
+}
+
+.menu a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -.3rem;
+
+    width: 100%;
+    height: 2px;
+
+    background: var(--teal);
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition: transform .15s ease;
+
+}
+
+.menu a:hover::after,
+.menu a.active::after {
+
+    transform: scaleX(1);
+
+}
+
+.dropdown {
+
+    position: relative;
+
+}
+
+.dropdown-menu {
+
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+
+    display: none;
+
+    min-width: 14rem;
+
+    margin: 0;
+    padding: .5rem 0;
+
+    list-style: none;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    box-shadow: 0 4px 12px rgba(0,0,0,.05);
+
+}
+
+.dropdown:hover .dropdown-menu {
+
+    display: block;
+
+}
+
+.dropdown-menu a {
+
+    display: block;
+
+    padding: .5rem 1rem;
+
+    white-space: nowrap;
+
+}
+.site-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.site-title {
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 0rem;
+
+    color: var(--text);
+    text-decoration: none;
+
+    font-size: 1.6rem;
+    font-weight: 650;
+
+    letter-spacing: -.02em;
+
+}
+
+.site-title:hover {
+
+    color: var(--text);
+    text-decoration: none;
+
+}
+
+.site-logo {
+
+    height: 5em;
+    width: auto;
+    position: relative;
+    top: 0.05em;
+    flex-shrink: 0;
+
+}
+
+.site-title-rest {
+
+    line-height: 1;
+
+}
+
+.menu {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-self: flex-start;
+}
+
+.external-links {
+    display: flex;
+    gap: 1rem;
+    align-self: flex-end;
+}
+.external-links a::after {
+    display: none;
+}
+
+.site-header {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    margin-bottom: .75rem;
+
+}
+
+
+
+.external-links a {
+
+    color: var(--muted);
+
+    text-decoration: none;
+
+}
+
+.external-links a:hover {
+
+    color: var(--text);
+
+    text-decoration: none;
+
+}
+
+.external-links a::after {
+
+    display: none;
+
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+h4 {
+
+    font-family: var(--font-heading);
+    line-height: 1.15;
+
+    margin: 0 0 var(--space-3);
+
+}
+
+h1 {
+    font-weight: 650;
+    font-size: clamp(2.8rem, 5vw, 3.8rem);
+
+}
+
+h2 {
+    display: inline-block;
+    margin: 0 0 var(--space-5);
+    padding: 0 0 .65rem;
+    border-bottom: 1px solid var(--rule);
+
+    font-weight: 625;
+    font-size: clamp(2rem, 4vw, 2.4rem);
+    line-height: 1.1;
+    letter-spacing: -.02em;
+}
+
+h2::after {
+    display: none;
+}
+
+h3 {
+
+    font-weight: 600;
+    font-size: 1.5rem;
+
+}
+
+h4 {
+    
+    font-weight: 550;
+    font-size: 1.2rem;
+
+}
+
+p,
+ul,
+ol,
+blockquote,
+pre {
+
+    margin: 0 0 var(--space-4);
+
+}
+
+small {
+
+    color: var(--muted);
+
+}
+
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+
+a {
+
+    color: var(--accent);
+    text-decoration: none;
+
+}
+
+a:hover {
+
+    color: var(--accent-hover);
+    text-decoration: underline;
+
+}
+
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero {
+    padding-top: 3rem;
+    padding-bottom: 2.5rem;
+}
+
+.tagline {
+    margin-bottom: 1.25rem;
+
+    font-size: 1.15rem;
+}
+
+.summary {
+    margin-bottom: 1.5rem;
+
+    font-size: 1.15rem;
+    line-height: 1.6;
+}
+
+.hero-links {
+
+    display: flex;
+    gap: var(--space-4);
+
+    margin-top: var(--space-5);
+
+}
+
+@media (max-width: 768px) {
+
+    .hero {
+        padding-top: 0.5rem;
+        padding-bottom: 2rem;
+    }
+
+    h1 {
+        font-size: clamp(2.5rem, 5vw, 3.75rem);
+        margin-bottom: 0.25rem;
+    }
+
+    .summary {
+        font-size: 1.1rem;
+    }
+
+}
+
+
+/* ==========================================================================
+   Sections
+   ========================================================================== */
+
+section + section {
+
+    margin-top: 2rem
+
+}
+
+hr {
+
+    border: 0;
+    border-top: 1px solid var(--border);
+
+    margin-block: var(--space-7);
+
+}
+
+blockquote {
+
+    margin-left: 0;
+
+    padding-left: var(--space-4);
+
+    border-left: 3px solid var(--accent);
+
+    color: var(--muted);
+
+}
+
+/* ==========================================================================
+   Project previews
+   ========================================================================== */
+
+.project-summary {
+
+    max-width: 60ch;
+
+    font-size: 1.15rem;
+
+    line-height: 1.65;
+
+    margin: 2rem 0 3rem;
+
+}
+
+/* ==========================================================================
+   Project previews
+   ========================================================================== */
+
+.project-preview {
+    padding-block: var(--space-5);
+    border-top: 1px solid var(--border);
+
+    transition:
+        background-color .15s ease,
+        border-color .15s ease,
+        padding-left .15s ease;
+}
+
+.project-preview:last-child {
+    border-bottom: 1px solid var(--border);
+}
+
+.project-preview:hover {
+    background: var(--surface);
+    border-top-color: var(--rule);
+    padding-left: .25rem;
+}
+
+.project-preview h3 {
+    margin-bottom: var(--space-2);
+    font-size: 1.35rem;
+    line-height: 1.2;
+    letter-spacing: -.02em;
+}
+
+.project-preview h3 a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.project-preview:hover h3 a {
+    color: var(--accent);
+}
+
+.project-preview p {
+    max-width: 60ch;
+    margin-bottom: var(--space-3);
+}
+
+.metadata-panel-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem;
+
+    color: var(--muted);
+    font-size: .88rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.separator {
+    color: var(--border);
+}
+
+.project-link {
+    margin-top: var(--space-3);
+    font-size: .95rem;
+}
+
+
+/* ==========================================================================
+   Code
+   ========================================================================== */
+
+code,
+pre {
+
+    font-family: var(--font-mono);
+
+}
+
+pre {
+
+    padding: var(--space-3);
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    overflow-x: auto;
+
+}
+
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+footer {
+
+    margin-top: var(--space-8);
+
+    border-top: 1px solid var(--border);
+
+}
+
+footer .page-width {
+
+    padding-block: var(--space-5);
+
+    color: var(--muted);
+
+    font-size: .95rem;
+
+}
+/* ==========================================================================
+   Research Previews
+   ========================================================================== */
+
+   .research-list {
+    margin-top: var(--space-4);
+}
+
+.research-preview {
+    padding-block: var(--space-5);
+    border-top: 1px solid var(--border);
+}
+
+.research-preview:last-child {
+    border-bottom: 1px solid var(--border);
+}
+
+.research-preview h3 {
+    margin-bottom: var(--space-2);
+    font-size: 1.35rem;
+    line-height: 1.2;
+    letter-spacing: -.02em;
+}
+
+.research-preview h3 a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.research-preview:hover h3 a {
+    color: var(--accent);
+}
+
+.research-summary {
+    max-width: 60ch;
+    margin-bottom: .75rem;
+}
+
+.research-meta,
+.research-outputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem;
+    color: var(--muted);
+    font-size: .88rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.research-outputs {
+    margin-top: .5rem;
+    margin-bottom: 0;
+}
+
+
+/* ==========================================================================
+   Structured panels
+   ========================================================================== */
+
+.panel,
+.metadata-panel,
+.role-panel,
+.principles-panel {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    margin-top: var(--space-4);
+
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   Metadata rows
+   ========================================================================== */
+
+.metadata-row,
+.role-item {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    gap: 1rem;
+    align-items: start;
+
+    padding: .8rem 1.25rem;
+}
+
+.metadata-row + .metadata-row,
+.role-item + .role-item {
+    border-top: 1px solid var(--panel-border);
+}
+
+.metadata-panel dt,
+.role-label {
+    margin: 0;
+    color: var(--muted);
+    font-size: .74rem;
+    font-weight: 650;
+    line-height: 1.35;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.metadata-panel dd,
+.role-value {
+    margin: 0;
+    color: var(--text);
+    font-size: .98rem;
+    line-height: 1.55;
+}
+
+/* ==========================================================================
+   Engineering approach / principles
+   ========================================================================== */
+
+.principles-panel {
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-6);
+}
+
+.principle {
+    padding: 1rem 1.25rem;
+    color: var(--text);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.principle + .principle {
+    border-top: 1px solid var(--panel-border);
+}
+
+/* Slightly more breathing room for the homepage principles block */
+.home .principles-panel .principle {
+    padding-top: 1.1rem;
+    padding-bottom: 1.1rem;
+}

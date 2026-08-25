@@ -1,0 +1,16 @@
+{{ define "main" }}
+
+<h1>{{ .Title }}</h1>
+
+{{ .Content }}
+
+{{ $pages := .Pages }}
+{{ if gt (len $pages) 0}}
+    <div class="research-list">
+        {{ range .Pages.ByWeight }}
+            {{ partial "research-preview.html" . }}
+        {{ end }}
+    </div>
+{{ end }}
+
+{{ end }}

@@ -1,0 +1,39 @@
+baseURL = "https://example.org/"
+languageCode = "en-gb"
+title = "Rowan Lindsay-Smith"
+
+disableKinds = [
+  "taxonomy",
+  "term",
+  "RSS"
+]
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+
+
+[params]
+
+github = "https://github.com/EmilyLindsay-Smith"
+linkedin = "https://linkedin.com/in/emily-lindsay-smith"
+orcid = "https://orcid.org/0000-0001-5044-7618"
+email = "mailto:emily.lindsay-smith@ling-phil.ox.ac.uk"
+
+
+[menus]
+
+  [[menus.main]]
+    name = "About"
+    pageRef = "/about"
+    weight = 50
+
+    [[menus.main]]
+    name = "Collaborate"
+    pageRef = "/collaborate"
+    weight = 60
+
+  [[menus.main]]
+    name = "CV"
+    pageRef = "/cv"
+    weight = 70
