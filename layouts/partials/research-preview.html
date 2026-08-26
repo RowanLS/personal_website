@@ -1,8 +1,9 @@
 {{ $page := . }}
 
-<article class="research-preview">
+<a class="research-preview" href="{{ .RelPermalink }}">
+<article>
     <h3>
-        <a href="{{ .RelPermalink }}">{{ .LinkTitle | default .Title }}</a>
+       {{ .LinkTitle | default .Title }}
     </h3>
 
     {{ with .Params.summary }}
@@ -31,3 +32,4 @@
         </p>
     {{ end }}
 </article>
+</a>

@@ -15,10 +15,10 @@ disableKinds = [
 
 [params]
 
-github = "https://github.com/EmilyLindsay-Smith"
-linkedin = "https://linkedin.com/in/emily-lindsay-smith"
+github = "https://github.com/RowanLS"
+linkedin = "https://linkedin.com/in/rowan-lindsay-smith"
 orcid = "https://orcid.org/0000-0001-5044-7618"
-email = "mailto:emily.lindsay-smith@ling-phil.ox.ac.uk"
+email = "mailto:rowan.lindsay-smith@ling-phil.ox.ac.uk"
 
 
 [menus]
@@ -34,6 +34,11 @@ email = "mailto:emily.lindsay-smith@ling-phil.ox.ac.uk"
     weight = 60
 
   [[menus.main]]
+    name = "Resources"
+    pageRef = "/Resources"
+    weight = 70
+
+  [[menus.main]]
     name = "CV"
     pageRef = "/cv"
-    weight = 70
+    weight = 80

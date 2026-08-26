@@ -8,7 +8,9 @@ summary: >
   maintainable, reusable and valuable beyond the lifetime of individual
   projects.
 
-role: Research Software Engineer
+profile: Research Software Engineer
+
+position: Postdoctoral Researcher
 
 focus:
   - research software engineering

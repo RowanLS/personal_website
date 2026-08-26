@@ -11,9 +11,9 @@
     .Params.area
     .Params.methods
     .Params.deliverables
-    .Params.role 
-    .Params.focus 
-    .Params.interests 
+    .Params.role
+    .Params.focus
+    .Params.interests
     .Params.collaboration
     .Params.document_type
     .Params.format
@@ -91,6 +91,20 @@
     {{ with .Params.role }}
     <div class="metadata-row">
         <dt>Role</dt>
+        <dd>{{ . }}</dd>
+    </div>
+    {{ end }}
+
+    {{ with .Params.profile }}
+    <div class="metadata-row">
+        <dt>Profile</dt>
+        <dd>{{ . }}</dd>
+    </div>
+    {{ end }}
+
+    {{ with .Params.position }}
+    <div class="metadata-row">
+        <dt>Current Job</dt>
         <dd>{{ . }}</dd>
     </div>
     {{ end }}

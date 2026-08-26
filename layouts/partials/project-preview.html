@@ -1,9 +1,7 @@
-<article class="project-preview">
-
+<a class="project-preview" href="{{ .RelPermalink }}">
+<article>
     <h3>
-        <a href="{{ .RelPermalink }}">
             {{ .Title }}
-        </a>
     </h3>
 
     {{ with .Description }}
@@ -31,3 +29,4 @@
     </div>
 
 </article>
+</a>

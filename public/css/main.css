@@ -2,25 +2,24 @@
    Design Tokens
    ========================================================================== */
 
-:root {
-
-
-    
+   :root {
     color-scheme: light dark;
-    /* Light theme */
-    --background:    #FAFAF8;
-    --surface:       #FFFFFF;
-    --panel:         #F8F8F9;
 
-    --text:          #2A2D31;
-    --muted:         #6A6E74;
+    /* Colours */
+    --background:   #FAFAF9;
+    --text:         #1C2522;
+    --muted:        #68736F;
+    --subtle:       #E1E6E3;
+    --accent:       #087F6D;
+    --accent-hover: #066B5C;
 
-    --border:        #D9D9D6;
-    --panel-border:  #E7E8EA;
-    --rule:          #C9CDD3;
+    /* Legacy colour aliases */
+    --surface:      var(--background);
+    --panel:        var(--subtle);
+    --border:       var(--subtle);
+    --panel-border: var(--subtle);
+    --rule:         var(--subtle);
 
-    --accent: #3B6E69;
-    --accent-hover: #2F5A56;
     /* Typography */
     --font-heading: "Inter", sans-serif;
     --font-body: "Inter", sans-serif;
@@ -44,34 +43,14 @@
 }
 
 @media (prefers-color-scheme: dark) {
-
     :root {
-
-
-        /* Surfaces */
-
-        --background: #17191B;
-        --surface:    #1E2023;
-        --panel:      #222529;
-
-        /* Typography */
-
-        --text:       #E4E7EA;
-        --muted:      #A6ADB5;
-
-        /* Structure */
-
-        --border:     #34383D;
-        --panel-border:#2E3338;
-        --rule:       #4A5057;
-
-        /* Interaction */
-
-        --accent:       #5AA39C;
-        --accent-hover: #76BAB4;
-
+        --background:   #111513;
+        --text:         #E8EEEB;
+        --muted:        #98A59F;
+        --subtle:       #29332F;
+        --accent:       #4CC9B0;
+        --accent-hover: #68D8C1;
     }
-
 }
 
 body,
@@ -135,36 +114,117 @@ footer .container {
 /* ==========================================================================
    Header
    ========================================================================== */
-
-header {
-
+   header {
     border-bottom: 1px solid var(--border);
+}
 
+
+/* --------------------------------------------------
+   Site navigation
+   -------------------------------------------------- */
+
+.site-nav {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    gap: 1rem;
+}
+
+
+/* --------------------------------------------------
+   External links
+   -------------------------------------------------- */
+
+.external-links {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    width: 100%;
+    gap: 1.25rem;
+
+    font-size: 0.9rem;
+}
+
+.external-links a {
+    color: var(--muted);
+    text-decoration: none;
+}
+
+.external-links a:hover {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+
+/* --------------------------------------------------
+   Site title
+   -------------------------------------------------- */
+
+.site-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+    color: var(--accent);
+    text-decoration: none;
+
+    font-size: 1.6rem;
+    font-weight: 650;
+    letter-spacing: -.02em;
+}
+
+.site-title h1 {
+    margin: 0;
+}
+
+.site-title:hover {
+    color: var(--accent-hover);
+    text-decoration: none;
+}
+
+
+/* --------------------------------------------------
+   Main menu
+   -------------------------------------------------- */
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    gap: 1.5rem;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
 }
 
 .menu a {
+    position: relative;
 
     color: var(--text);
-    position: relative;
     text-decoration: none;
-
 }
 
 .menu a:hover {
-
-    color: var(--text);
+    color: var(--accent-hover);
     text-decoration: none;
-
 }
 
 .menu a.active {
-
-    color: var(--text);
-
+    color: var(--accent);
 }
 
-.menu a::after {
 
+/* Menu underline */
+
+.menu > li > a::after {
     content: "";
 
     position: absolute;
@@ -175,30 +235,29 @@ header {
     width: 100%;
     height: 2px;
 
-    background: var(--teal);
+    background: var(--accent);
 
     transform: scaleX(0);
     transform-origin: left;
 
     transition: transform .15s ease;
-
 }
 
-.menu a:hover::after,
-.menu a.active::after {
-
+.menu > li > a:hover::after,
+.menu > li > a.active::after {
     transform: scaleX(1);
-
 }
+
+
+/* --------------------------------------------------
+   Dropdown menus
+   -------------------------------------------------- */
 
 .dropdown {
-
     position: relative;
-
 }
 
 .dropdown-menu {
-
     position: absolute;
 
     top: 100%;
@@ -214,124 +273,49 @@ header {
     list-style: none;
 
     background: var(--surface);
-
     border: 1px solid var(--border);
 
-    box-shadow: 0 4px 12px rgba(0,0,0,.05);
-
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .05);
 }
 
 .dropdown:hover .dropdown-menu {
-
     display: block;
-
 }
 
 .dropdown-menu a {
-
     display: block;
 
     padding: .5rem 1rem;
 
     white-space: nowrap;
-
-}
-.site-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-.site-title {
-
-    display: inline-flex;
-    align-items: center;
-
-    gap: 0rem;
-
-    color: var(--text);
-    text-decoration: none;
-
-    font-size: 1.6rem;
-    font-weight: 650;
-
-    letter-spacing: -.02em;
-
 }
 
-.site-title:hover {
-
-    color: var(--text);
-    text-decoration: none;
-
+.dropdown-menu a:hover {
+    color: var(--accent-hover);
 }
+
+
+/* Don't show the main-menu underline inside dropdowns */
+
+.dropdown-menu a::after {
+    display: none;
+}
+
+
+/* --------------------------------------------------
+   Existing logo styles, if still used elsewhere
+   -------------------------------------------------- */
 
 .site-logo {
-
     height: 5em;
     width: auto;
+
     position: relative;
     top: 0.05em;
+
     flex-shrink: 0;
-
 }
 
-.site-title-rest {
-
-    line-height: 1;
-
-}
-
-.menu {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    align-self: flex-start;
-}
-
-.external-links {
-    display: flex;
-    gap: 1rem;
-    align-self: flex-end;
-}
-.external-links a::after {
-    display: none;
-}
-
-.site-header {
-
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-
-    margin-bottom: .75rem;
-
-}
-
-
-
-.external-links a {
-
-    color: var(--muted);
-
-    text-decoration: none;
-
-}
-
-.external-links a:hover {
-
-    color: var(--text);
-
-    text-decoration: none;
-
-}
-
-.external-links a::after {
-
-    display: none;
-
-}
 
 /* ==========================================================================
    Typography
@@ -350,6 +334,7 @@ h4 {
 }
 
 h1 {
+    margin-top: var(--space-5);
     font-weight: 650;
     font-size: clamp(2.8rem, 5vw, 3.8rem);
 
@@ -379,7 +364,7 @@ h3 {
 }
 
 h4 {
-    
+
     font-weight: 550;
     font-size: 1.2rem;
 
@@ -421,6 +406,70 @@ a:hover {
 }
 
 
+/* ==========================================================================
+   Content tables
+   Styled consistently with metadata panels
+   ========================================================================== */
+
+/* ==========================================================================
+   Resources tables
+   ========================================================================== */
+
+   .resources-page table {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    margin-block: var(--space-4);
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 4px;
+
+    overflow: hidden;
+}
+
+/* Hide Markdown's required table header */
+.resources-page table thead {
+    display: none;
+}
+
+/* Rows */
+.resources-page table td {
+    padding: .8rem 1.25rem;
+
+    vertical-align: top;
+
+    color: var(--text);
+    font-size: .98rem;
+    line-height: 1.55;
+}
+
+.resources-page table tr + tr td {
+    border-top: 1px solid var(--panel-border);
+}
+
+/* First column: equivalent to metadata-panel dt */
+.resources-page table td:first-child {
+    width: 10rem;
+
+    color: var(--muted);
+
+    font-size: .74rem;
+    font-weight: 650;
+    line-height: 1.35;
+
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+/* Second column: equivalent to metadata-panel dd */
+.resources-page table td:last-child {
+    color: var(--text);
+}
 /* ==========================================================================
    Hero
    ========================================================================== */
@@ -505,26 +554,23 @@ blockquote {
 /* ==========================================================================
    Project previews
    ========================================================================== */
-
-.project-summary {
-
+   .project-summary {
     max-width: 60ch;
 
     font-size: 1.15rem;
-
     line-height: 1.65;
 
     margin: 2rem 0 3rem;
-
 }
 
-/* ==========================================================================
-   Project previews
-   ========================================================================== */
-
 .project-preview {
+    display: block;
+
     padding-block: var(--space-5);
     border-top: 1px solid var(--border);
+
+    color: var(--text);
+    text-decoration: none;
 
     transition:
         background-color .15s ease,
@@ -540,21 +586,24 @@ blockquote {
     background: var(--surface);
     border-top-color: var(--rule);
     padding-left: .25rem;
-}
 
-.project-preview h3 {
-    margin-bottom: var(--space-2);
-    font-size: 1.35rem;
-    line-height: 1.2;
-    letter-spacing: -.02em;
-}
-
-.project-preview h3 a {
     color: var(--text);
     text-decoration: none;
 }
 
-.project-preview:hover h3 a {
+.project-preview h3 {
+    margin-bottom: var(--space-2);
+
+    color: var(--text);
+
+    font-size: 1.35rem;
+    line-height: 1.2;
+    letter-spacing: -.02em;
+
+    transition: color .15s ease;
+}
+
+.project-preview:hover h3 {
     color: var(--accent);
 }
 
@@ -563,12 +612,22 @@ blockquote {
     margin-bottom: var(--space-3);
 }
 
+.project-preview:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.project-preview:focus-visible h3 {
+    color: var(--accent);
+}
+
 .metadata-panel-preview {
     display: flex;
     flex-wrap: wrap;
     gap: .35rem;
 
     color: var(--muted);
+
     font-size: .88rem;
     font-weight: 500;
     line-height: 1.4;
@@ -582,7 +641,6 @@ blockquote {
     margin-top: var(--space-3);
     font-size: .95rem;
 }
-
 
 /* ==========================================================================
    Code
@@ -639,27 +697,55 @@ footer .page-width {
 }
 
 .research-preview {
+    display: block;
+
     padding-block: var(--space-5);
     border-top: 1px solid var(--border);
+
+    color: var(--text);
+    text-decoration: none;
+
+    transition:
+        background-color .15s ease,
+        border-color .15s ease,
+        padding-left .15s ease;
 }
 
 .research-preview:last-child {
     border-bottom: 1px solid var(--border);
 }
 
-.research-preview h3 {
-    margin-bottom: var(--space-2);
-    font-size: 1.35rem;
-    line-height: 1.2;
-    letter-spacing: -.02em;
-}
+.research-preview:hover {
+    background: var(--surface);
+    border-top-color: var(--rule);
+    padding-left: .25rem;
 
-.research-preview h3 a {
     color: var(--text);
     text-decoration: none;
 }
 
-.research-preview:hover h3 a {
+.research-preview h3 {
+    margin-bottom: var(--space-2);
+
+    color: var(--text);
+
+    font-size: 1.35rem;
+    line-height: 1.2;
+    letter-spacing: -.02em;
+
+    transition: color .15s ease;
+}
+
+.research-preview:hover h3 {
+    color: var(--accent);
+}
+
+.research-preview:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.research-preview:focus-visible h3 {
     color: var(--accent);
 }
 
@@ -673,7 +759,9 @@ footer .page-width {
     display: flex;
     flex-wrap: wrap;
     gap: .35rem;
+
     color: var(--muted);
+
     font-size: .88rem;
     font-weight: 500;
     line-height: 1.4;
@@ -683,7 +771,6 @@ footer .page-width {
     margin-top: .5rem;
     margin-bottom: 0;
 }
-
 
 /* ==========================================================================
    Structured panels

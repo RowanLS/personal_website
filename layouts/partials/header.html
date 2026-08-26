@@ -1,14 +1,17 @@
-<nav class="site-nav">
+<nav class="site-nav"></nav>
+
+    <div class="external-links">
+        <a href="{{ site.Params.email }}" target="_blank">Email</a>
+        <a href="{{ site.Params.github }}" target="_blank">GitHub</a>
+        <a href="{{ site.Params.linkedin }}" target="_blank">LinkedIn</a>
+        <a href="{{ site.Params.orcid }}" target="_blank">ORCID</a>
+
+    </div>
+
     <a class="site-title" href="/">
-
-    <img
-        class="site-logo"
-        src="/img/R.png"
-        alt="R">
-
-    <span class="site-title-rest"></span>
-
+        <h1>Rowan Lindsay-Smith</h1>
     </a>
+
     <ul class="menu">
 
         <li class="dropdown">
@@ -37,7 +40,7 @@
 
         </li>
 
-                <li class="dropdown">
+        <li class="dropdown">
 
             <a href="/research/">Research</a>
 
@@ -74,17 +77,5 @@
         {{ end }}
 
     </ul>
-
-    <div class="external-links">
-
-        <a href="{{ site.Params.github }}">GitHub</a>
-
-        <a href="{{ site.Params.linkedin }}">LinkedIn</a>
-
-        <a href="{{ site.Params.orcid }}">ORCID</a>
-
-        <a href="{{ site.Params.email }}">Email</a>
-
-    </div>
 
 </nav>
