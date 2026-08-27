@@ -9,8 +9,11 @@ users: researchers
 timeline: 2023-present
 
 technologies:
-  - Python
-  - React
+  - Python 3.12
+  - FastAPI
+  - Vue3
+  - SQLite
+  - Briefcase
 
 github:
 website:
@@ -18,119 +21,37 @@ paper:
 
 ---
 
-## Overview
-
-Describe the project in two or three paragraphs.
-
-Answer:
-
-- What is it?
-- Who uses it?
-- Why does it exist?
-- What problem does it solve?
-
-Someone should understand the project before they scroll.
-
 ## The Problem
 
-What technical or research problem motivated the software?
+Linguistic data is key to linguistics research. However, collecting and labelling large amounts of linguistics data is time-consuming and risks errors.
 
-Avoid describing features.
+## The Solution : Harken
 
-Instead explain the underlying challenge.
+Harken is a local-first desktop application for collecting and managing audio recordings for linguistic fieldwork and experimental research. It is designed for researchers who may be working without reliable internet access, so recording, administration, storage and data management all operate locally on the researcher’s computer.
+The application combines a dedicated participant recording interface with a separate researcher administration interface, coordinated by a local Python backend. Research metadata is stored in SQLite while audio and other large artefacts are maintained on the filesystem.
 
-Examples:
 
-- Researchers needed…
-- Existing workflows…
-- Previous software…
-- Manual processing…
-
-## My Contribution
-
-Focus on **your work**, not the project.
-
-For example:
-
-- Software architecture
-- Backend implementation
-- Frontend development
-- Performance optimisation
-- Testing
-- Deployment
-- Documentation
-- Technical leadership
-- Mentoring
-
-Be explicit about what you personally designed or implemented.
 
 ## Engineering Highlights
 
-Describe the engineering decisions that mattered.
+|Purpose | Notes|
+|---|---|
+|Software architecture	| Multi-component desktop application with clearly defined frontend, backend and persistence boundaries|
+|Research software engineering	| Software designed around reproducibility, provenance, archival requirements and research workflows|
+|Backend engineering	|FastAPI service coordinating validation, business logic, persistence, audio processing and exports|
+|Frontend engineering	|Vue/TypeScript participant SPA alongside a server-rendered Jinja/htmx researcher interface|
+|Data modelling	|Relational representation of experiments, versions, participants, sessions, consent and recordings|
+|Data integrity	|Immutable experiment versioning and idempotent recording uploads|
+|Audio processing	|Centralised capture, validation, processing and archival storage pipeline|
+|Persistence	|Deliberate separation of structured SQLite data from binary filesystem assets|
+|Offline operation	|Local-first architecture requiring no network connection during normal research use|
+|Data portability	|Self-contained projects and exports designed for movement, analysis and long-term archiving|
+|Resilience	|Explicit backup, recovery, archival and deletion workflows|
+|Maintainability	|Separation of concerns supported by documented Architecture Decision Records|
 
-### Architecture
+## Architecture
 
-...
+Diagrams Coming
 
-### Maintainability
-
-...
-
-### Performance
-
-...
-
-### Testing
-
-...
-
-### Deployment
-
-...
-
-Only include subsections that are relevant.
-
-## Impact
-
-Describe the outcomes.
-
-Examples:
-
-- Used in active research
-- Supports multiple research projects
-- Improved reproducibility
-- Reduced manual effort
-- Used by external collaborators
-- Open source
-- Commercial deployment
-
-Prefer evidence over adjectives.
-
-## Lessons Learned
-
-What engineering lessons did this project teach you?
-
-This section often says more about your experience than a technology list.
-
-Examples:
-
-- Designing software for changing research requirements
-- Managing technical debt
-- Supporting long-lived codebases
-- Working with interdisciplinary teams
-
-## Related Outputs
-
-### Publications
-
-- Paper title
-
-### Talks
-
-- Conference presentation
-
-### Links
-
-- GitHub
-- Documentation
-- Project website
+## Related Projects
+An earlier version of this software was deployed for a colleague to use on fieldwork in India. Harken facilitated the collection of 4800 files that were preprocessed using Talverk and then analysed as part of my Bengali Aspiration research project.

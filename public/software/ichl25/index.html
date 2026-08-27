@@ -9,7 +9,7 @@
 
 <title>
 
-Curriculum Vitae | Rowan Lindsay-Smith
+ICHL25 Conference Website | Rowan Lindsay-Smith
 
 </title>
 
@@ -200,108 +200,55 @@ Curriculum Vitae | Rowan Lindsay-Smith
     <div class="container">
         
 
-<article class="page cv-page">
+<article>
 
-    <h1>Curriculum Vitae</h1>
-
-    
-        <p class="project-summary">Concise summary of academic appointments, research software leadership and selected outputs. The downloadable PDF remains the canonical version for formal applications.
-</p>
-    
+    <h1>ICHL25 Conference Website</h1>
 
     
 
-
-
-<dl class="panel metadata-panel">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-      
-    <div class="metadata-row">
-        <dt>Document</dt>
-        <dd>CV</dd>
-    </div>
-    
-
-    
-    <div class="metadata-row">
-        <dt>Format</dt>
-        <dd>PDF</dd>
-    </div>
-    
-
-    
-    <div class="metadata-row">
-        <dt>Updated</dt>
-        <dd>July 2026</dd>
-    </div>
-    
-
-    
-    <div class="metadata-row">
-        <dt>Pages</dt>
-        <dd>2</dd>
-    </div>
-    
-
-
-</dl>
-
-
-
-    
-        <p class="project-link">
-            <a href="/cv/cv.pdf" target="_blank">Download CV (PDF)</a>
-        </p>
-    
-
-    <p>I am a Research Software Engineer and technical lead specialising in scientific
-software and machine learning infrastructure. My work spans research software,
-speech technology, computational linguistics and technical leadership across
-long-lived research programmes.</p>
-<h2 id="what-is-in-the-pdf">What is in the PDF</h2>
-<p>The PDF CV contains a compact professional summary, selected technical
-leadership, major software systems, academic appointments, education, selected
-publications and awards.</p>
-<h2 id="selected-highlights">Selected Highlights</h2>
-<p>My current work focuses on research software engineering, software architecture,
-speech technology and long-lived infrastructure for research projects.</p>
-<h2 id="related-pages">Related Pages</h2>
-<p>For more detail, see the Software and Research sections of this website. Those
-pages provide the case studies and programme-level context behind the CV.</p>
+    <h2 id="the-problem">The Problem</h2>
+<p>In 2022, I co-organised the <em>International Conference for Historical Linguistics 25</em> at Oxford University. This is a major biennial conference for historical linguistics researchers from around the world. We needed a website where we could host all the information required for the conference as we planned this to be a paper free conference.</p>
+<h2 id="the-solution-ichl25-website">The Solution: ICHL25 Website</h2>
+<p>I developed the web platform for the 25th International Conference on Historical Linguistics, supporting the programme and digital conference materials for a large, multi-track international academic conference.</p>
+<p>Rather than maintaining the programme as a collection of static pages, I modelled talks, posters, workshops, sessions, rooms and authors as structured data and built the interface around that data. The React application used reusable components to generate the multi-day timetable and dynamically link programme entries to individual presentation pages, abstracts, handouts and other resources.</p>
+<p>The site combined the public conference website with a navigable digital programme and archive. Parameterised routing allowed presentation pages to be generated from the underlying conference dataset, while conditional rendering handled the different resources available for talks, workshops and other presentation types.</p>
+<h2 id="engineering-highlights">Engineering Highlights</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Purpose</th>
+					<th>Notes</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Frontend Architecture</td>
+					<td>Built a component-based React single-page application with React Router.</td>
+			</tr>
+			<tr>
+					<td>Data Modelling</td>
+					<td>Designed a structured content model for a complex multi-day, multi-track conference programme.</td>
+			</tr>
+			<tr>
+					<td>Data-Driven Rendering</td>
+					<td>Generated programme views from a common dataset rather than duplicating content across pages.</td>
+			</tr>
+			<tr>
+					<td>Dynamic Routing</td>
+					<td>Connected timetable entries with presentation metadata, abstracts and handouts using dynamic routes.</td>
+			</tr>
+			<tr>
+					<td>Document Integration</td>
+					<td>Integrated and embedded conference documents, including PDF abstracts and presentation materials.</td>
+			</tr>
+			<tr>
+					<td>Production Delivery</td>
+					<td>Developed and deployed the site as a production service supporting conference organisers, speakers and attendees.</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="learning-points">Learning Points</h2>
+<p>The project was built to serve a real international conference and gave me experience translating a complex academic information structure into a maintainable, data-driven interface. Looking back, I would now separate the content model more cleanly from the frontend, introduce schema validation and TypeScript, and strengthen automated and accessibility testing. The core architectural approach—structured data as the source of truth, with the interface derived from it—is one I would retain.</p>
 
 
 </article>

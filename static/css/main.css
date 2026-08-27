@@ -415,7 +415,7 @@ a:hover {
    Resources tables
    ========================================================================== */
 
-   .resources-page table {
+   table {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -433,12 +433,12 @@ a:hover {
 }
 
 /* Hide Markdown's required table header */
-.resources-page table thead {
+ table thead {
     display: none;
 }
 
 /* Rows */
-.resources-page table td {
+table td {
     padding: .8rem 1.25rem;
 
     vertical-align: top;
@@ -448,12 +448,12 @@ a:hover {
     line-height: 1.55;
 }
 
-.resources-page table tr + tr td {
+table tr + tr td {
     border-top: 1px solid var(--panel-border);
 }
 
 /* First column: equivalent to metadata-panel dt */
-.resources-page table td:first-child {
+table td:first-child {
     width: 10rem;
 
     color: var(--muted);
@@ -467,7 +467,7 @@ a:hover {
 }
 
 /* Second column: equivalent to metadata-panel dd */
-.resources-page table td:last-child {
+table td:last-child {
     color: var(--text);
 }
 /* ==========================================================================
@@ -604,7 +604,7 @@ blockquote {
 }
 
 .project-preview:hover h3 {
-    color: var(--accent);
+    color: var(--accent-hover);
 }
 
 .project-preview p {
@@ -613,12 +613,12 @@ blockquote {
 }
 
 .project-preview:focus-visible {
-    outline: 2px solid var(--accent);
+    outline: 2px solid var(--accent-hover);
     outline-offset: 3px;
 }
 
 .project-preview:focus-visible h3 {
-    color: var(--accent);
+    color: var(--accent-hover);
 }
 
 .metadata-panel-preview {

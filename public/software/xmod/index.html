@@ -96,6 +96,14 @@ XMOD | Rowan Lindsay-Smith
 
                 
 
+                    <li>
+                        <a href="/software/ichl25/">
+                            ICHL25 Conference Website
+                        </a>
+                    </li>
+
+                
+
                 <li class="dropdown-divider"></li>
 
                 <li>
@@ -198,93 +206,66 @@ XMOD | Rowan Lindsay-Smith
 
     
 
-    <h2 id="overview">Overview</h2>
-<p>Describe the project in two or three paragraphs.</p>
-<p>Answer:</p>
-<ul>
-<li>What is it?</li>
-<li>Who uses it?</li>
-<li>Why does it exist?</li>
-<li>What problem does it solve?</li>
-</ul>
-<p>Someone should understand the project before they scroll.</p>
-<h2 id="the-problem">The Problem</h2>
-<p>What technical or research problem motivated the software?</p>
-<p>Avoid describing features.</p>
-<p>Instead explain the underlying challenge.</p>
-<p>Examples:</p>
-<ul>
-<li>Researchers needed…</li>
-<li>Existing workflows…</li>
-<li>Previous software…</li>
-<li>Manual processing…</li>
-</ul>
-<h2 id="my-contribution">My Contribution</h2>
-<p>Focus on <strong>your work</strong>, not the project.</p>
-<p>For example:</p>
-<ul>
-<li>Software architecture</li>
-<li>Backend implementation</li>
-<li>Frontend development</li>
-<li>Performance optimisation</li>
-<li>Testing</li>
-<li>Deployment</li>
-<li>Documentation</li>
-<li>Technical leadership</li>
-<li>Mentoring</li>
-</ul>
-<p>Be explicit about what you personally designed or implemented.</p>
+    <h2 id="the-problem">The Problem</h2>
+<p>When investigating mental representations of language, psycholinguistic experiments often require millisecond-level precision in reaction time measurements. The technology you use to run these experiments matters.</p>
+<p>Oxford University&rsquo;s Language and Brain Lab had used software written in Visual Basic coupled with custom hardware for over 15 years. This set up worked well both at the lab in Oxford, and also could be taken abroad to Europe and India for fieldwork. Researchers could run up to 16 participants at once.</p>
+<p>However, the software was run on two very old computers. Attempts to port it to new computers failed. Therefore, new software that could integrate with the existing hardware while maintaining the same functionality was required. I identified the key specification and possible improvements. I architected, implemented, tested and deployed Xmod 2.0.</p>
+<h2 id="the-solution-xmod-20">The Solution: Xmod 2.0</h2>
+<p>XMOD is a Java desktop application for running laboratory linguistics experiments involving synchronised audio stimuli, visual stimuli, and participant reaction-time collection through dedicated hardware.</p>
+<p>It uses <em>Swing/AWT</em> for researcher and participant interfaces, Java Sound for WAV playback, and jSerialComm to communicate with an external controller over USB serial.
+The application loads experiment definitions from TMS files, coordinates each experimental trial, sends timing/control information to the hardware, receives binary response packets from up to 16 participant response boxes, decodes reaction times and button presses, and exports experimental results.
+The design separates experiment orchestration, serial communication, audio playback, experiment loading, result processing and presentation, with event-driven communication between components.
+Long-running operations are moved away from the Swing UI thread, making concurrency and resource lifecycle management important engineering concerns.</p>
 <h2 id="engineering-highlights">Engineering Highlights</h2>
-<p>Describe the engineering decisions that mattered.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Purpose</th>
+					<th>Notes</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Hardware/software integration</td>
+					<td>implementing a binary serial protocol around dedicated experimental hardware</td>
+			</tr>
+			<tr>
+					<td>Concurrent programming</td>
+					<td>coordinating UI, serial I/O, experiment execution and audio playback without blocking the application</td>
+			</tr>
+			<tr>
+					<td>Binary data processing</td>
+					<td>decoding hardware response packets into participant responses and reaction-time measurements</td>
+			</tr>
+			<tr>
+					<td>Experiment orchestration</td>
+					<td>coordinating visual presentation, audio, hardware timing commands and response collection across repeated trials</td>
+			</tr>
+			<tr>
+					<td>Fault handling</td>
+					<td>dealing with controller disconnection, experiment aborts, invalid experiment definitions and unavailable audio</td>
+			</tr>
+			<tr>
+					<td>Research data processing</td>
+					<td>turning raw hardware responses and experiment metadata into structured result files</td>
+			</tr>
+			<tr>
+					<td>Multi-display UI</td>
+					<td>providing a researcher interface alongside a full-screen participant display</td>
+			</tr>
+			<tr>
+					<td>Legacy compatibility</td>
+					<td>reproducing behaviour and data conventions from an earlier experimental system while moving the implementation to Java.</td>
+			</tr>
+			<tr>
+					<td>Testing</td>
+					<td>X% test coverage with JUnit</td>
+			</tr>
+	</tbody>
+</table>
 <h3 id="architecture">Architecture</h3>
-<p>&hellip;</p>
-<h3 id="maintainability">Maintainability</h3>
-<p>&hellip;</p>
-<h3 id="performance">Performance</h3>
-<p>&hellip;</p>
-<h3 id="testing">Testing</h3>
-<p>&hellip;</p>
-<h3 id="deployment">Deployment</h3>
-<p>&hellip;</p>
-<p>Only include subsections that are relevant.</p>
-<h2 id="impact">Impact</h2>
-<p>Describe the outcomes.</p>
-<p>Examples:</p>
-<ul>
-<li>Used in active research</li>
-<li>Supports multiple research projects</li>
-<li>Improved reproducibility</li>
-<li>Reduced manual effort</li>
-<li>Used by external collaborators</li>
-<li>Open source</li>
-<li>Commercial deployment</li>
-</ul>
-<p>Prefer evidence over adjectives.</p>
-<h2 id="lessons-learned">Lessons Learned</h2>
-<p>What engineering lessons did this project teach you?</p>
-<p>This section often says more about your experience than a technology list.</p>
-<p>Examples:</p>
-<ul>
-<li>Designing software for changing research requirements</li>
-<li>Managing technical debt</li>
-<li>Supporting long-lived codebases</li>
-<li>Working with interdisciplinary teams</li>
-</ul>
-<h2 id="related-outputs">Related Outputs</h2>
-<h3 id="publications">Publications</h3>
-<ul>
-<li>Paper title</li>
-</ul>
-<h3 id="talks">Talks</h3>
-<ul>
-<li>Conference presentation</li>
-</ul>
-<h3 id="links">Links</h3>
-<ul>
-<li>GitHub</li>
-<li>Documentation</li>
-<li>Project website</li>
-</ul>
+<h2 id="planned-improvements">Planned Improvements:</h2>
+<p>A subsequent iteration will focus on making the concurrency and I/O boundaries more explicit: using a single-owner model for serial communication, an explicit experiment lifecycle/state machine, atomic cancellation and deterministic resource cleanup. I will also strengthen research-data integrity through transactional experiment loading, incremental result persistence, unique run identifiers and provenance metadata such as hashes of the experiment and audio inputs.</p>
 
 
 </article>

@@ -96,6 +96,14 @@ Talverk | Rowan Lindsay-Smith
 
                 
 
+                    <li>
+                        <a href="/software/ichl25/">
+                            ICHL25 Conference Website
+                        </a>
+                    </li>
+
+                
+
                 <li class="dropdown-divider"></li>
 
                 <li>
@@ -198,93 +206,65 @@ Talverk | Rowan Lindsay-Smith
 
     
 
-    <h2 id="overview">Overview</h2>
-<p>Describe the project in two or three paragraphs.</p>
-<p>Answer:</p>
-<ul>
-<li>What is it?</li>
-<li>Who uses it?</li>
-<li>Why does it exist?</li>
-<li>What problem does it solve?</li>
-</ul>
-<p>Someone should understand the project before they scroll.</p>
-<h2 id="the-problem">The Problem</h2>
-<p>What technical or research problem motivated the software?</p>
-<p>Avoid describing features.</p>
-<p>Instead explain the underlying challenge.</p>
-<p>Examples:</p>
-<ul>
-<li>Researchers needed…</li>
-<li>Existing workflows…</li>
-<li>Previous software…</li>
-<li>Manual processing…</li>
-</ul>
-<h2 id="my-contribution">My Contribution</h2>
-<p>Focus on <strong>your work</strong>, not the project.</p>
-<p>For example:</p>
-<ul>
-<li>Software architecture</li>
-<li>Backend implementation</li>
-<li>Frontend development</li>
-<li>Performance optimisation</li>
-<li>Testing</li>
-<li>Deployment</li>
-<li>Documentation</li>
-<li>Technical leadership</li>
-<li>Mentoring</li>
-</ul>
-<p>Be explicit about what you personally designed or implemented.</p>
+    <h2 id="the-problem">The Problem</h2>
+<p>Linguists are interested in how people actually use language, not just how textbooks claim people do.
+Therefore, many linguistics research projects require the collection and preprocessing of audio data for analysis.
+Preprocessing audio data is a very time consuming activity for researchers - whether it is done manually or by a succession of individual scripts. Automating this process saves time, allowing researcher time to be spent on the activities that truly need manual handling.</p>
+<p>In addition to traditional linguistics research, training and benchmarking machine learning models requires accurately transcribed and processed data.</p>
+<p>Faced with these difficulties, I designed, implemented, tested and deployed Talverk.</p>
+<h2 id="the-solution-talverk">The Solution: Talverk</h2>
+<p>Talverk is a Python CLI pipeline for transforming speech recordings and transcripts into reviewed, research-ready aligned datasets. The system uses FFmpeg and Montreal Forced Aligner (MFA), manages out-of-vocabulary words and G2P pronunciation generation, processes Praat TextGrids, and supports word-level audio export.</p>
+<p>The engineering focus is on building a reproducible, stateful processing workflow around tools that operate on the filesystem and through long-running subprocesses. A SQLite manifest tracks samples and processing state, while structured logging provides traceability across ingestion, validation, preparation, alignment, review and export.</p>
 <h2 id="engineering-highlights">Engineering Highlights</h2>
-<p>Describe the engineering decisions that mattered.</p>
-<h3 id="architecture">Architecture</h3>
-<p>&hellip;</p>
-<h3 id="maintainability">Maintainability</h3>
-<p>&hellip;</p>
-<h3 id="performance">Performance</h3>
-<p>&hellip;</p>
-<h3 id="testing">Testing</h3>
-<p>&hellip;</p>
-<h3 id="deployment">Deployment</h3>
-<p>&hellip;</p>
-<p>Only include subsections that are relevant.</p>
-<h2 id="impact">Impact</h2>
-<p>Describe the outcomes.</p>
-<p>Examples:</p>
-<ul>
-<li>Used in active research</li>
-<li>Supports multiple research projects</li>
-<li>Improved reproducibility</li>
-<li>Reduced manual effort</li>
-<li>Used by external collaborators</li>
-<li>Open source</li>
-<li>Commercial deployment</li>
-</ul>
-<p>Prefer evidence over adjectives.</p>
-<h2 id="lessons-learned">Lessons Learned</h2>
-<p>What engineering lessons did this project teach you?</p>
-<p>This section often says more about your experience than a technology list.</p>
-<p>Examples:</p>
-<ul>
-<li>Designing software for changing research requirements</li>
-<li>Managing technical debt</li>
-<li>Supporting long-lived codebases</li>
-<li>Working with interdisciplinary teams</li>
-</ul>
-<h2 id="related-outputs">Related Outputs</h2>
-<h3 id="publications">Publications</h3>
-<ul>
-<li>Paper title</li>
-</ul>
-<h3 id="talks">Talks</h3>
-<ul>
-<li>Conference presentation</li>
-</ul>
-<h3 id="links">Links</h3>
-<ul>
-<li>GitHub</li>
-<li>Documentation</li>
-<li>Project website</li>
-</ul>
+<table>
+	<thead>
+			<tr>
+					<th>Feature</th>
+					<th>Notes</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Stateful pipeline design</td>
+					<td>persistent SQLite manifest rather than an ephemeral sequence of scripts</td>
+			</tr>
+			<tr>
+					<td>Scientific tool orchestration</td>
+					<td>controlled integration of FFmpeg, MFA and G2P through Python subprocesses</td>
+			</tr>
+			<tr>
+					<td>Research reproducibility</td>
+					<td>checksums, structured metadata and a clear path toward artifact/configuration provenance</td>
+			</tr>
+			<tr>
+					<td>Human-in-the-loop workflow</td>
+					<td>alignment output passes through explicit review before final export</td>
+			</tr>
+			<tr>
+					<td>Data transformation</td>
+					<td>canonical audio preparation, OOV remediation, TextGrid manipulation and word-level segmentation</td>
+			</tr>
+			<tr>
+					<td>Observability</td>
+					<td>structured JSON logging and planned event-driven progress reporting</td>
+			</tr>
+			<tr>
+					<td>Reliability engineering</td>
+					<td>identified concurrency, atomicity, cancellation and recovery requirements rather than treating filesystem processing as inherently transactional</td>
+			</tr>
+			<tr>
+					<td>Comprehensive Testing</td>
+					<td>67% coverage with pytest</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="planned-improvements">Planned Improvements</h2>
+<p>The initial implementation exposed an important systems problem: database state, filesystem artifacts and external subprocesses cannot participate in a single transaction. A second version will therefore model processing explicitly as recoverable runs, with guarded SQLite state transitions, isolated workspaces and atomic publication of validated artifacts.</p>
+<p>I will add artifact provenance—linking outputs to input checksums, configuration, models and tool versions—and formalise idempotency so interrupted operations can be safely retried. Subprocess management would gain bounded output, timeouts and signal-aware cancellation.</p>
+<p>Finally, I will extract orchestration from the CLI into a service layer that emits typed progress events. This would support a Rich terminal interface while preserving clean non-interactive/CI operation and keeping presentation independent of processing correctness.</p>
+<h2 id="related-projects">Related Projects</h2>
+<p>I built Harken, desktop software to collect audio data on fieldwork that was then processed by Talverk. I used Talverk to preprocess 4800 files for my Bengali Aspiration project. This avoided manual preprocessing by research assistants, who could then focus on checking automated measurements.</p>
+<p>I also used Talverk to process the training and testing data for different FlexSR applications. As of August 2026, I have processed over 100,000 files for this purpose.</p>
 
 
 </article>

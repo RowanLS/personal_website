@@ -18,8 +18,9 @@ focus:
   - speech technology
 
 interests:
-  - scientific computing
-  - computational linguistics
+  - software engineering
+  - speech recognition
+  - theoretical linguistics
 ---
 
 ## How I Work
@@ -68,10 +69,3 @@ the outset, combining domain expertise with sustainable engineering practices.
 
 I am particularly interested in collaborations involving research
 infrastructure, computational methods and open scientific software.
-
-## Outside Work
-
-A short paragraph about interests outside work, mentoring, open source,
-technical writing or community activities.
-
-This section is entirely optional and should remain brief.
